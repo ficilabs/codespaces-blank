@@ -16,7 +16,8 @@ class RolePermissionSeeder extends Seeder
         DB::transaction(function () {
             try {
                 Role::create(['name' => 'Administrator']);
-                Role::create(['name' => 'Member']);
+                Role::create(['name' => 'Teacher']);
+                Role::create(['name' => 'Student']);
             } catch (\Throwable $th) {
                 DB::rollBack();
             }

@@ -1,35 +1,31 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
-// Landing Page
-Route::get('/', function () {
-    return view('frontend.welcome');
-})->name('/');
+// 🌐 Public Routes
+Route::view('/', 'frontend.welcome')->name('/');
 
-Route::group(['middleware' => ['auth', 'verified']], function () {
+// 🔐 Protected Routes (Authenticated + Verified)
+Route::middleware(['auth', 'verified'])->group(function () {
 
-    // Home
-    Route::group(['prefix' => 'home', 'as' => 'home.'], function () {
-        Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('index');
+    // 🏠 Home
+    Route::prefix('home')->name('home.')->group(function () {
+        Route::get('/', [HomeController::class, 'index'])->name('index');
     });
 
-    Route::group(['middleware' => ['role:Administrator']], function () {
-        Route::group(['prefix' => 'users',  'as' => 'users.'], function () {
-            Route::resource('/', \App\Http\Controllers\UserController::class);
-        });
+    // 🛡️ Admin Only Routes
+    Route::middleware(['role:Administrator'])->group(function () {
+        Route::resource('users', UserController::class)->names('users');
     });
+
 });
 
 require __DIR__ . '/auth.php';

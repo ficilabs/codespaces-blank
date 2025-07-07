@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="{{ asset('assets') }}/"
+<html lan g="{{ str_replace('_', '-', app()->getLocale()) }}" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="{{ asset('assets') }}/"
     data-template="vertical-menu-template-free">
 
 <head>
@@ -26,6 +26,8 @@
     {{-- Core CSS --}}
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/core.css') }}" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
+    <!--link rel="stylesheet" href="{{ asset('assets/vendor/css/core-dark.css') }}" class="template-customizer-core-css" /-->
+    <!--link rel="stylesheet" href="{{ asset('assets/vendor/css/theme-default-dark.css') }}" class="template-customizer-theme-css" /-->
     <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
 
     {{-- Vendor CSS --}}
@@ -94,6 +96,7 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="{{ asset('assets/vendor/libs/github/github.min.js') }}"></script>
+
 </body>
 
 </html>

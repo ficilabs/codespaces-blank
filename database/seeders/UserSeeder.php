@@ -24,6 +24,27 @@ class UserSeeder extends Seeder
                     'password'          => Hash::make('administrator'),
                 ]);
                 $admin->assignRole('Administrator');
+
+                $user = User::create([
+                    'name'              => 'Fici',
+                    'username'          => 'fici',
+                    'email'             => 'fici@gmail.com',
+                    'email_verified_at' => now(),
+                    'password'          => Hash::make('cotot977'),
+                ]);
+                $user->assignRole('Teacher');
+
+                // Random Users (20)
+                User::factory()
+                    ->count(20)
+                    ->create()
+                    ->each(fn ($user) => $user->assignRole('Teacher'));
+
+                // Random Users (100)
+                User::factory()
+                    ->count(100)
+                    ->create()
+                    ->each(fn ($user) => $user->assignRole('Student'));
             } catch (\Throwable $e) {
                 throw $e;
             }
