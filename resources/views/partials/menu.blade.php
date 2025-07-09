@@ -25,6 +25,21 @@
             </a>
         </li>
 
+        <li class="menu-item">
+            <a href="{{ route('attendance.todayReport') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-clipboard"></i>
+                <div>Laporan Hari Ini</div>
+            </a>
+        </li>
+
+
+        <li class="menu-item {{ request()->is('attendance/scanner') ? 'active' : '' }}">
+            <a href="{{ route('attendance.scanner') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-qr-scan"></i>
+                <div data-i18n="Scanner">Scanner</div>
+            </a>
+        </li>
+
         @role('Administrator')
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Users Management</span>
@@ -40,6 +55,14 @@
                     <li class="menu-item {{ request()->is('users') ? 'active' : '' }}">
                         <a href="{{ route('users.index') }}" class="menu-link">
                             <div data-i18n="Pengguna">Pengguna</div>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="menu-sub">
+                    <li class="menu-item {{ request()->is('users') ? 'active' : '' }}">
+                        <a href="{{ route('grades.index') }}" class="menu-link">
+                            <div data-i18n="Kelas">Kelas</div>
                         </a>
                     </li>
                 </ul>

@@ -22,6 +22,12 @@
                     <input type="text" class="form-control" name="username" required>
                 </div>
 
+                <!-- National id -->
+                <div class="mb-3">
+                    <label for="editNationalId" class="form-label">NIS/NIP</label>
+                    <input type="text" class="form-control" id="editNationalId" name="national_id" required>
+                </div>
+
                 <!-- Email -->
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>

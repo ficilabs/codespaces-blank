@@ -53,6 +53,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name'     => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users,username',
+            'national_id' => 'required|unique:users,national_id',
             'email'    => 'required|email|unique:users,email',
             'password' => 'required|string|min:6',
             'role'     => 'required|exists:roles,name', // Validate against roles table
@@ -61,6 +62,7 @@ class UserController extends Controller
         $user = User::create([
             'name'         => $validated['name'],
             'username'     => $validated['username'],
+            'national_id' => $validated['national_id'],
             'email'        => $validated['email'],
             'password'     => bcrypt($validated['password']),
             'last_seen_at' => now(),

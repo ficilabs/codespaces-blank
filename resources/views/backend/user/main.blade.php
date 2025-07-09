@@ -47,6 +47,7 @@
             <thead class="table-light text-center">
                 <tr>
                 <th>Name</th>
+                <th>Nis</th>
                 <th>Email</th>
                 <th>Role</th>
                 <th>Status</th>
@@ -65,6 +66,7 @@
                     <div class="fw-medium text-body">{{ $user->name }}</div>
                     </div>
                 </td>
+                <td>{{ $user->national_id }}</td>
                 <td>{{ $user->email }}</td>
                 <td class="text-center">{{ $user->getRoleNames()->first() ?? 'No Role' }}</td>
                 <td>
@@ -95,6 +97,7 @@
                     data-bs-target="#editModal"
                     data-user-id="{{ $user->id }}"
                     data-user-name="{{ $user->name }}"
+                    data-user-national-id="{{ $user->national_id }}"
                     data-user-email="{{ $user->email }}">
                     <i class="bx bx-edit"></i>
                     </button>

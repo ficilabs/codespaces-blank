@@ -11,6 +11,10 @@
         </div>
         <div class="modal-body">
         <div class="mb-3">
+            <label for="editNationalId" class="form-label">NIM atau NISN</label>
+            <input type="text" class="form-control" id="editNationalId" name="national_id" required>
+        </div>
+        <div class="mb-3">
             <label for="editName" class="form-label">Name</label>
             <input type="text" class="form-control" id="editName" name="name" required>
         </div>
@@ -38,6 +42,7 @@
             // Populate form fields with user data
             document.getElementById('editName').value = button.getAttribute('data-user-name');
             document.getElementById('editEmail').value = button.getAttribute('data-user-email');
+            document.getElementById('editNationalId').value = button.getAttribute('data-user-national-id');
 
             // Set the form action to the user's update route
             const userId = button.getAttribute('data-user-id');

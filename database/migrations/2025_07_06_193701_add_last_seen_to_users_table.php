@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->timestamp('last_seen_at')->nullable()->after('email_verified_at');
+            $table->string('national_id')->nullable()->unique()->after('password');
+            $table->foreignId('class_group_id')->nullable()->after('password')->constrained('class_groups')->nullOnDelete();
         });
     }
 
@@ -20,6 +22,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('last_seen_at');
+            $table->dropColumn('national_id');
+            $table->dropForeign(['class_group_id']);
         });
     }
 };
