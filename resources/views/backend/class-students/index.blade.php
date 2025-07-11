@@ -89,6 +89,7 @@
         <div class="mt-3 d-flex justify-content-center">
             {{ $students->links('pagination::bootstrap-5') }}
         </div>
+
     </div>
 
     {{-- Include Modal for CRUD --}}

@@ -9,7 +9,7 @@
 
       <div class="modal-body">
         <!-- Card for printing -->
-        <div id="pdf-wrapper" class="pdf-a4-hidden" style="width: 210mm; height: 297mm; display: flex; align-items: center; justify-content: center; background: #fff;">
+        <div id="pdf-wrapper" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
         <div id="qr-card-print" class="border rounded bg-white d-flex flex-column align-items-center justify-content-center" style="height: 85.60mm; width: 53.98mm; text-align: center; box-shadow: 0 0 4mm #ccc;">
           <div class="mb-2">
             <img id="logo-img" src="{{ asset('assets/img/logo/logo.jpg') }}" width="40" alt="Logo Sekolah" style="display: block; margin: 0 auto;">

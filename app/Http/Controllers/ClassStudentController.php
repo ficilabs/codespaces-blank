@@ -91,14 +91,14 @@ class ClassStudentController extends Controller
                 'nama' => $student->name,
                 'nis' => $student->national_id,
                 'kelas' => optional($student->classGroup?->grade)->name . ' - ' . $student->classGroup?->group_number,
-                'qr_url' => "https://api.qrserver.com/v1/create-qr-code/?data={$student->national_id}&size=100x100",
+                'qr' => base64_encode(file_get_contents("https://api.qrserver.com/v1/create-qr-code/?data={$student->national_id}&size=100x100")),
             ];
         });
 
-        $pdf = Pdf::loadView('exports.qr-cards', ['cards' => $cards])
-                  ->setPaper('a4', 'portrait');
+        $logo = base64_encode(file_get_contents(public_path('img/logo-sekolah.png')));
 
-        return $pdf->download('kartu-qr-siswa.pdf');
+        return Pdf::loadView('exports.qr-cards', compact('cards', 'logo'))
+            ->setPaper('a4', 'portrait')
+            ->download('kartu-qr-siswa.pdf');
     }
-
 }

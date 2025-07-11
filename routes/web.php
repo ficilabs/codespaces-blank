@@ -38,8 +38,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::prefix('class-students')->name('class-students.')->group(function () {
             Route::get('/', [ClassStudentController::class, 'index'])->name('index');
             Route::put('/{user}', [ClassStudentController::class, 'update'])->name('update');
-            Route::get('/{user}/qr-card', [ClassStudentController::class, 'downloadSingleCard'])
-                ->name('download.single-card');
+            Route::get('/{user}/qr-card', [ClassStudentController::class, 'downloadSingleCard'])->name('download.single-card');
+            Route::get('/class-students/print-qr', [ClassStudentController::class, 'downloadQrCards'])->name('class-students.qr.print');
         });
 
         Route::resource('users', UserController::class)->names('users');
