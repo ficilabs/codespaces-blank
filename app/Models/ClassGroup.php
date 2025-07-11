@@ -24,4 +24,10 @@ class ClassGroup extends Model
         return $this->belongsTo(Grade::class);
     }
 
+    public function students()
+    {
+        return $this->users()->whereHas('roles', function ($q) {
+            $q->where('name', 'Student');
+        });
+    }
 }

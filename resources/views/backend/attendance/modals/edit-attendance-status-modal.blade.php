@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal fade" id="editStatusModal" tabindex="-1" aria-labelledby="editStatusModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form method="POST" id="editStatusForm">
+        <form method="POST" id="editStatusForm" action="{{ route('attendance.update', ':id') }}">
             @csrf
             @method('PUT')
             <div class="modal-content">

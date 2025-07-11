@@ -41,6 +41,33 @@
         </li>
 
         @role('Administrator')
+
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Class Management</span>
+            </li>
+
+            <li class="menu-item {{ request()->is('classes') ? 'open' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-layout"></i>
+                    <div data-i18n="Kelola Kelas">Kelola Kelas</div>
+                </a>
+
+                <ul class="menu-sub">
+                    <li class="menu-item {{ request()->is('class-groups') ? 'active' : '' }}">
+                        <a href="{{ route('class-students.index') }}" class="menu-link">
+                            <div data-i18n="Kelas Per Jenjang">Kelas Siswa</div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ request()->is('classes') ? 'active' : '' }}">
+                        <a href="{{ route('grades.index') }}" class="menu-link">
+                            <div data-i18n="Kelas">Kelas</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Users Management</span>
             </li>
@@ -59,13 +86,6 @@
                     </li>
                 </ul>
 
-                <ul class="menu-sub">
-                    <li class="menu-item {{ request()->is('users') ? 'active' : '' }}">
-                        <a href="{{ route('grades.index') }}" class="menu-link">
-                            <div data-i18n="Kelas">Kelas</div>
-                        </a>
-                    </li>
-                </ul>
             </li>
 
             <li class="menu-header small text-uppercase">

@@ -57,6 +57,25 @@ class AttendanceController extends Controller
 
         return redirect()->back()->with('success', "{$user->name} berhasil absen sebagai {$status}.");
     }
+    
+    /**
+     * Update the specified attendance status.
+     */
+    public function update(Request $request, Attendance $attendance)
+    {
+        // ✅ Validate incoming status
+        $request->validate([
+            'status' => 'required|in:HADIR,TERLAMBAT,IZIN,SAKIT',
+        ]);
+
+        // ✅ Update the attendance record
+        $attendance->update([
+            'status' => $request->status,
+        ]);
+
+        // ✅ Redirect back with success message
+        return redirect()->back()->with('success', 'Status kehadiran berhasil diperbarui.');
+    }
 
     public function todayReport(Request $request)
     {
@@ -97,7 +116,7 @@ class AttendanceController extends Controller
                 ->withQueryString();
         }
 
-        return view('backend.attendance.today-report', compact('classGroups', 'schoolDay'));
-}
+        return view('backend.attendance.today-report', compact('classGroups', 'schoolDay'));    
+    }
 
 }

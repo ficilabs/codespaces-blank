@@ -130,7 +130,8 @@
                 </div>
             </div>
 
-            <x-edit-attendance-status-modal />
+            {{-- Include Modal for CRUD --}}
+            @include('backend.attendance.modals.edit-attendance-status-modal')
 
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
